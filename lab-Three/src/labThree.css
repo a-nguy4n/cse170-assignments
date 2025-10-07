@@ -1,0 +1,39 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1{
+    color: rgb(255, 183, 0);
+    background: #613613;
+    width: 100%;
+    padding: 0 0 0 5%;
+}
+
+#text-one{
+    padding: 0 0 0 5%;
+    font-weight: bold;
+}
+
+#text-two{
+    padding: 0 0 0 5%;
+    background: rgba(255, 165, 39, 0.313);
+}
+
+form{
+    border: solid #613613;
+    margin: 0 0 0 3%;
+    padding: 2%;
+    width: 50%;
+    color: black;
+    font-style: normal;
+}
+
+button{
+    border: none;
+    background: rgb(255, 183, 0);
+}
+
+#text-three{
+    padding: 0 0 0 5%;
+    font-size: 0.75rem;
+}
