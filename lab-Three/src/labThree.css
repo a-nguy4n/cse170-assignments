@@ -16,14 +16,13 @@ header{
 }
 
 #text-two{
-    padding-left: 5%;
-    width: 100%;
-    background: rgba(255, 165, 39, 0.313);
+    padding: 1em 0 1em 5%;
+    width: 100vw;
+    background-color: rgba(255, 165, 39, 0.313);
 }
 
 form{
-    border: solid #613613;
-    border-style: dotted;
+    border: 2px dotted #613613;
     margin: 0 0 0 3%;
     padding: 2%;
     width: 50%;
@@ -33,7 +32,7 @@ form{
 
 button{
     border: none;
-    background: rgb(255, 183, 0);
+    background-color: rgb(255, 183, 0);
 }
 
 #text-three{
