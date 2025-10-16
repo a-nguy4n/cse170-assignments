@@ -1,0 +1,82 @@
+body{
+    background: #502A51;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header{
+    background: #d4c6de;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    color: #502A51;
+}
+
+h2{
+    color: #d4c6de;
+    margin: 2% 0% 0% 1%;
+}
+
+p{
+    font-size: 1.5rem;
+}
+
+figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+figcaption{
+    font-size: 1.25rem;
+    color: #FDD5E0;
+}
+
+#theme-img{
+    width: 100vw;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.movie-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.movie-grid img{
+    width: 100%;
+    object-fit: cover; 
+    display: block; 
+}
+
+
+
+@media (min-width: 550px){
+
+    .movie-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px){
+
+    .movie-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);;
+    }
+}
+
+
+@media (min-width: 1025px){
+
+    .movie-grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);;
+    }
+}
