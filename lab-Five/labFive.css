@@ -5,13 +5,15 @@ body{
 
 header{
     background-color: #d4c6de;
-    width: 100vw;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     position: sticky;
     color: #502A51;
+    top: 0;
+    z-index: 100;
 }
 
 h2{
