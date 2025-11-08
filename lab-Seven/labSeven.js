@@ -27,15 +27,17 @@ function replaceImg(index){
 // if img id is 0 change to 2
 
 function prev(){
-    const previousButton = document.querySelector('.prev');
-    previousButton.addEventListener('click', () => {
-        const currentImage = document.querySelector(".carousel");
-        const currentImageIndex = parseInt(currentImage.id);
-        const previousImageIndex = (currentImageIndex - 1 +  imageURLs.length) % imageURLs.length;
-        
-        console.log("previous button clicked");
-        replaceImg(previousImageIndex);
-    });
+    const currentImage = document.querySelector(".carousel");
+    const currentImageIndex = parseInt(currentImage.id);
+    let previousImageIndex = currentImageIndex - 1;
+    
+    if(previousImageIndex < 0){
+        previousImageIndex = imageURLs.length - 1;  
+    }
+    
+    console.log("previous button clicked");
+    replaceImg(previousImageIndex);
+ 
 };
 
 
@@ -44,16 +46,16 @@ function prev(){
 // if img id is 0 or 1 increment to next 
 // if img id is 2 change to 0 
 function next(){
-    const nextButton = document.querySelector('.next');
-   
-    nextButton.addEventListener('click', () => {
-        const currentImage = document.querySelector(".carousel");
-        const currentImageIndex = parseInt(currentImage.id);
-        const nextImageIndex = (currentImageIndex + 1) % imageURLs.length;
+    const currentImage = document.querySelector(".carousel");
+    const currentImageIndex = parseInt(currentImage.id);
+    let nextImageIndex = currentImageIndex + 1;
 
-        console.log("next button clicked");
-        replaceImg(nextImageIndex);
-    });
+    if(nextImageIndex >= imageURLs.length){
+        nextImageIndex = 0;   
+    }
+
+    console.log("next button clicked");
+    replaceImg(nextImageIndex);
 };  
 
 
@@ -63,7 +65,4 @@ window.addEventListener("DOMContentLoaded", () => {
     if(starterImg && starterImg.id == ''){
         starterImg.id = "0";
     }
-
-    prev();
-    next();
 });
