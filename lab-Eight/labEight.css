@@ -1,0 +1,35 @@
+
+/* Starter Code  */
+* { 
+  box-sizing: border-box; 
+  font-family: sans-serif; 
+}
+
+main { 
+  max-width: 25rem; 
+  margin: 2rem auto; 
+  padding: 0 1rem; 
+}
+
+input { 
+  width: 100%; 
+  padding: .5rem; 
+  margin: .5rem 0 .75rem; 
+}
+
+button { 
+  padding: .5rem .75rem; 
+}
+
+.hidden { 
+  display: none; 
+}
+
+#warning.checking{
+  color:black;
+}
+
+#warning {
+  color:red;
+  font-size:small;
+}

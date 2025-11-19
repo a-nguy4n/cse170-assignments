@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE 170: Lab 8</title>
+    <link rel="stylesheet" href="labEight.css">
+</head>
+<body>
+
+    <!-- *** Starter Code *** -->
+    <main>
+        <h1>Register</h1>
+    
+        <!-- Form -->
+        <form id="signup-form">
+            <label for="username">Choose a username</label> 
+            <input id="username"> 
+            <p id="warning" class="hidden"></p>
+        </form>
+    
+        <!-- Additional information to collect only if username is available -->
+        <form id="next-steps" class="hidden">
+            <label for="username">Phone number</label> 
+            <input id="phone"> 
+            <label for="fullname">Name</label> 
+            <input id="fullname"> 
+            <button type="submit">Submit</button>  
+        </form>
+    </main>
+
+    <script src="labEight.js"></script>
+</body>
+</html>
