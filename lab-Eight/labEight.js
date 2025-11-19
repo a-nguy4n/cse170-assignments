@@ -1,5 +1,5 @@
-
-// --------- Starter 
+// You MUST use the function below to check if the username input is available
+// Do not edit this function
 function fakeUsernameCheck(name) {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -10,81 +10,96 @@ function fakeUsernameCheck(name) {
     }, 2000); // Waits 2 seconds to simulate a backend call
   });
 }
-// --------- End Starter 
+
+
+// Starter code: Global Vars 
+let form = null;
+let username = null;
+let warningField = null;
+let nextSteps = null;
 
 
 function showChecking(){
-    const username = document.getElementById("username");
-    const warningField = document.getElementById("warning");
-    
-    username.addEventListener("input", function(){
-        warningField.classList.remove("hidden");
-        warningField.classList.add("checking");
-        warningField.textContent = "Checking availability...";
-    })
+    warningField.classList.remove("hidden");
+    warningField.classList.add("checking");
+    warningField.innerHTML = "Checking availability...";
 }
 
 
-function showWarningUnavailable(){
-
-  const username = document.getElementById("username");
-  const input = username.value.trim();
-  const warningField = document.getElementById("warning");
-  const nextSteps = document.getElementById("next-steps");
-  
-  fakeUsernameCheck(input).then((available) => {
+function showWarningUnavailable() {
+    warningField.classList.remove("hidden");
     warningField.classList.remove("checking");
-   
-    if(available === false){
-        warningField.classList.remove("hidden");
-        warningField.textContent = "This username is not available";
-        nextSteps.classList.add("hidden");
-    }
-
-    else{
-        warningField.classList.add("hidden");
-        warningField.textContent = "";
-        nextSteps.classList.remove("hidden");
-    }
-  });
+    warningField.textContent = "This username is not available";
 }
-
 
 function showWarningEmpty() {
-    const warningField = document.getElementById("warning");
     warningField.classList.remove("hidden");
     warningField.classList.remove("checking");
     warningField.textContent = "You can use letters, numbers, and symbols";
 }
 
+// Initially, the next-steps form (which collects additional information only if the user name is available) should be invisible. You should decide when it is made visible (and how). 
+function showNextSteps(){
+    nextSteps.classList.remove("hidden");
+}
 
+function hideNextSteps(){
+    nextSteps.classList.add("hidden");
+}
 
+function hideWarning() {
+  // Any warnings should be removed as soon as they are not needed (i.e., if the warning does not apply).
+  warningField.classList.add("hidden");
+  warningField.classList.remove("checking");
+  warningField.textContent = "";
+}
+
+function checkEmpty(){
+  let name = username.value;
+  // Checks that the user entered something
+  // If not, it should show the appropriate warning
+  if(name.length === 0){
+    showWarningEmpty();
+    hideNextSteps();
+    return true;
+  }
+  return false;
+};
+
+// Create an function that uses the fakeUserNameCheck function to see if the username the person typed is available (We provide that line). If it is, show the rest of the form (the next steps) for the user to complete, otherwise provide a warning that it is unavailable.
+async function checkName() {
+    let name = username.value;
+    let available = await fakeUsernameCheck(name);
+    // this will return "True" if the name is available, "False" otherwise.
+    if(available){
+        hideWarning();
+        showNextSteps();
+    }
+    else{
+        showWarningUnavailable();
+        hideNextSteps();
+    }
+}
+
+// Add any event listeners here
 window.addEventListener("DOMContentLoaded", () => {
-    const username = document.getElementById("username");
-    const warningField = document.getElementById("warning");
-    const nextSteps = document.getElementById("next-steps");
+    
+    // giving the global vars values 
+    form = document.getElementById("username-form");
+    username = document.getElementById("username");
+    warningField = document.getElementById("warning");
+    nextSteps = document.getElementById("next-steps");
 
-    let isUserTyping = false;
-    showChecking();
-    username.addEventListener("input", function(){
+    hideWarning();
+    hideNextSteps();
 
-        const input = username.value.trim();
-
-        if(input.length === 0){                 // when user deleted inputted username 
-            nextSteps.classList.add("hidden"); 
-
-            if(isUserTyping === true){
-                showWarningEmpty()
-            }
-            else{
-                warningField.classList.add("hidden");
-                warningField.textContent = "";
-            }
+    username.addEventListener("input", () => {
+        
+        if(checkEmpty() === false){
+            return;
         }
 
-        isUserTyping = true;
-            showWarningUnavailable();
+        showChecking();
+        checkName();
     });
-
-   showWarningUnavailable();
 });
