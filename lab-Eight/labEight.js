@@ -95,7 +95,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     username.addEventListener("input", () => {
         
-        if(checkEmpty() === false){
+        if(checkEmpty()){
             return;
         }
 
